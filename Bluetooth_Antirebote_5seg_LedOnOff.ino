@@ -2,6 +2,7 @@ String inputString = "";         // a string to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
 int PinLed=13;
 int comandos=0;
+int TiempoEnmascarado=15000;
 
 const int boton= 3;            // boton conectado al pin 4
 const int tiempoAntirebote =10;
@@ -49,16 +50,18 @@ void setup (){
   Serial.begin(9600);   //Iniciamos la comunicacion serial
   pinMode(boton,INPUT); //declaramos el boton como entrada
   pinMode(PinLed,OUTPUT);
-  inputString.reserve(10);
+  
+  
+  inputString.reserve(100);
 }
 
 void loop () {
   estadoBoton =digitalRead (boton);              //leemos el estado del boton
   if ((estadoBoton  != estadoBotonAnterior)||(estadoBoton==1)) {     //si hay cambio con respeto al estado 
     if (antirebote (boton)){   
-         Serial.println ("2");         //checamos  si esta preionado y si lo esta
+         Serial.write ("2\r\n");         //checamos  si esta preionado y si lo esta
         //  cuenta++;                
-          delay(5000);
+          delay(TiempoEnmascarado);
          //aumentamos la cuenta
          
     }
@@ -72,11 +75,11 @@ void loop () {
     if(inputString=="0\n"){
    //  Serial.println("llego un 0"); 
       digitalWrite(PinLed,LOW);
-        //Serial.println ("Puerta Cerrada"); 
+        Serial.println ("Puerta Cerrada"); 
     
     }else{if(inputString=="1\n"){
         digitalWrite(PinLed,HIGH);
-      //     Serial.println ("Puerta Abierta"); 
+        Serial.println ("Puerta Abierta"); 
     
     }}
       
