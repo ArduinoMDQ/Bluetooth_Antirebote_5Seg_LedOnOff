@@ -2,7 +2,7 @@ String inputString = "";         // a string to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
 int PinLed=13;
 int comandos=0;
-int TiempoEnmascarado=15000;
+int TiempoEnmascarado=30000;
 
 const int boton= 3;            // boton conectado al pin 4
 const int tiempoAntirebote =10;
@@ -75,12 +75,12 @@ void loop () {
     if(inputString=="0\n"){
    //  Serial.println("llego un 0"); 
       digitalWrite(PinLed,LOW);
-        Serial.println ("Puerta Cerrada"); 
-    
+    Serial.write ("0\r\n");         //checamos  si esta preionado y si lo esta
+        
     }else{if(inputString=="1\n"){
         digitalWrite(PinLed,HIGH);
-        Serial.println ("Puerta Abierta"); 
-    
+    Serial.write ("1\r\n");         //checamos  si esta preionado y si lo esta
+        
     }}
       
     
