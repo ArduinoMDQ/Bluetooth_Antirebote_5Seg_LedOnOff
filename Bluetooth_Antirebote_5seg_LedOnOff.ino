@@ -2,7 +2,7 @@ String inputString = "";         // a string to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
 int PinLed=13;
 int comandos=0;
-int TiempoEnmascarado=30000;
+int TiempoEnmascarado=30;
 
 const int boton= 3;            // boton conectado al pin 4
 const int tiempoAntirebote =10;
